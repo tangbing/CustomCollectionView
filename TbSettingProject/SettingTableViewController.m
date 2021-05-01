@@ -15,13 +15,16 @@
 #import "CustomCollectionViewCell.h"
 #import "TBFooterCollectionReusableView.h"
 #import "CollectionFooterReusableView.h"
-//#import "SectionBgCollectionViewLayout.h"
-#import "TbSettingProject-Swift.h"
 #import <Masonry/Masonry.h>
-#import "LSNewMineHeaderView.h"
-@interface SettingTableViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,SectionBgCollectionViewDelegate>
+#import "CustomTableViewCell.h"
 
-@property (nonatomic, strong)UICollectionView *collectionView;
+#import "Tool.h"
+#import <MJExtension/MJExtension.h>
+#import "SettingModel.h"
+#import "LSNewMineHeaderView.h"
+
+@interface SettingTableViewController ()
+@property (nonatomic, strong)NSArray <SettingModel *>* settingModelArray;
 @end
 
 @implementation SettingTableViewController
@@ -29,91 +32,69 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setupTableView];
+    [self loadData];
+}
+
+- (void)loadData {
     
+    NSArray *settingArray = [Tool readFileWithFileName:@"Setting"];
+    NSLog(@"array:%@",settingArray);
+    
+    self.settingModelArray = [SettingModel mj_objectArrayWithKeyValuesArray:settingArray];
+    [self.tableView reloadData];
+    
+}
+
+- (void)setupTableView {
     self.view.backgroundColor = [UIColor lightGrayColor];
+    [self.tableView registerClass:[CustomTableViewCell class] forCellReuseIdentifier:@"setting"];
+    self.tableView.backgroundColor = [UIColor lightGrayColor];
     
     
-    [self.view addSubview:self.collectionView];
-    [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.view.mas_left).mas_offset(16);
-        make.right.mas_equalTo(self.view.mas_right).mas_offset(-16);
-        make.bottom.mas_equalTo(self.view.safeAreaInsets.bottom);
-        make.top.mas_equalTo(self.view.safeAreaInsets.top);
-
-    }];
+    UIView *headerBgView  = [UIView new];
+    headerBgView.frame = CGRectMake(0, 0, ATdeviceScaleWidth, 185);
+    LSNewMineHeaderView *minHeaderView = [LSNewMineHeaderView initNewMineHeaderView];
+    [headerBgView addSubview:minHeaderView];
+    minHeaderView.frame = headerBgView.bounds;
+    self.tableView.tableHeaderView = headerBgView;
 }
 
-#pragma mark - Collection view data source
-
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 3;
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return self.settingModelArray.count;
 }
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    
-    return 3;
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 1;
 }
 
-- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-    CustomCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    CustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"setting"];
+    cell.settingModel = self.settingModelArray[indexPath.section];
     return cell;
 }
 
-- (UIColor *)collectionView:(UICollectionView *)collectionView collectionViewLayout:(UICollectionViewLayout *)collectionViewLayout backgroundColorForSectionAt:(int)section {
-    return [UIColor purpleColor];
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 15;
 }
 
-
-- (CGSize)collectionView:(UICollectionView*)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
-    return CGSizeMake(ATdeviceScaleWidth, section == 0 ? 185 + 25 : 25);
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    UIView *iv = [UIView new];
+    iv.backgroundColor = [UIColor clearColor];
+    return iv;
 }
 
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section{
-    return CGSizeMake(ATdeviceScaleWidth, 16);
-}
-
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
-        
-        LSNewMineHeaderView *reusableView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header" forIndexPath:indexPath];
-        reusableView.heightConstraint.constant = (indexPath.section == 0 ? 185  : 0);
-        reusableView.topView.hidden = !(indexPath.section == 0);
-        [reusableView layoutIfNeeded];
-        return reusableView;
-    } else if([kind isEqualToString:UICollectionElementKindSectionFooter]) {
-        CollectionFooterReusableView *reusableView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"footer" forIndexPath:indexPath];
-        return reusableView;
+    SettingModel *settingModel = self.settingModelArray[indexPath.section];
+    NSUInteger menuNum = settingModel.subMenus.count;
+
+    NSInteger row = menuNum / 4;
+    NSInteger col = menuNum % 4;
+    if (col != 0) {
+        row = row + 1;
     }
-    return nil;
+    return row * 90 + 45;
 }
-
-- (UICollectionView *)collectionView {
-    if (!_collectionView) {
-        SectionBgCollectionViewLayout *layout = [[SectionBgCollectionViewLayout alloc] init];
-        layout.itemSize = CGSizeMake((ATdeviceScaleWidth - 16 *2) / 4, 58 + 20) ;
-        layout.sectionInset = UIEdgeInsetsMake(0, 15, 0, 15);
-        layout.minimumInteritemSpacing = 0;
-        layout.minimumLineSpacing = 0;
-        
-        
-        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
-        _collectionView.backgroundColor = [UIColor clearColor];
-        _collectionView.dataSource = self;
-        _collectionView.delegate = self;
-        
-        [_collectionView registerNib:[UINib nibWithNibName:@"LSNewMineHeaderView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
-        [_collectionView registerClass:[CollectionFooterReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"footer"];
-        [_collectionView registerClass:[CustomCollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
-    }
-    return _collectionView;
-}
-
-
-- (UIColor * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout backgroundColorForSectionAt:(NSInteger)section {
-    return  [UIColor whiteColor];
-}
-
 
 @end

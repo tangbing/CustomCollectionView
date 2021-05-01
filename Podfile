@@ -5,7 +5,7 @@ target 'TbSettingProject' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
   pod 'Masonry'
-
+  pod 'MJExtension'
   # Pods for TbSettingProject
 
   target 'TbSettingProjectTests' do

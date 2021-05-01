@@ -9,13 +9,11 @@
 #import <UIKit/UIKit.h>
 @class LSMyCenterInfoDataModel;
 NS_ASSUME_NONNULL_BEGIN
-@interface LSNewMineHeaderView : UICollectionReusableView
+@interface LSNewMineHeaderView : UIView
 
 + (instancetype)initNewMineHeaderView;
 
-@property (nonatomic , strong)LSMyCenterInfoDataModel *model;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightConstraint;
-@property (weak, nonatomic) IBOutlet UIView *topView;
+//@property (nonatomic , strong)LSMyCenterInfoDataModel *model;
 
 @end
 

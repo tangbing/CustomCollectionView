@@ -8,6 +8,10 @@
 #import "CustomCollectionViewCell.h"
 #import <Masonry/Masonry.h>
 
+@interface CustomCollectionViewCell()
+@property (nonatomic, strong)UIImageView * imageView;
+@property (nonatomic, strong)UILabel * label;
+@end
 
 @implementation CustomCollectionViewCell
 
@@ -21,9 +25,8 @@
 - (void)setupUI {
     self.backgroundColor = [UIColor whiteColor];
     UIImageView *imageView = [[UIImageView alloc] init];
-    [imageView setImage:[UIImage imageNamed:@"my_other_recommended"]];
     [self.contentView addSubview:imageView];
-    
+    _imageView = imageView;
     [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(28, 28));
         make.centerX.mas_equalTo(self);
@@ -31,13 +34,21 @@
     }];
     
     UILabel *label = [UILabel new];
-    label.text = @"你好呀哈哈";
     [self.contentView addSubview:label];
+    _label = label;
     [label mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.mas_equalTo(self);
+        make.centerX.mas_equalTo(_imageView);
         make.top.mas_equalTo(imageView.mas_bottom).mas_offset(10);
         make.height.mas_equalTo(20);
     }];
+    
+}
+- (void)setImageModel:(SubMenuModel *)imageModel {
+    _imageModel = imageModel;
+    
+    [_imageView setImage:[UIImage imageNamed:_imageModel.imageName]];
+    
+    _label.text = _imageModel.imageTitle;
     
 }
 

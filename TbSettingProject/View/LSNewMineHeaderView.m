@@ -7,7 +7,9 @@
 //
 
 #import "LSNewMineHeaderView.h"
+//#import "LSMyCenterInfoDataModel.h"
 //#import "UIImageView+SDImageShield.h"
+//#import "LSMyCenterInfoDataModel.h"
 //#import "UIResponder+LSRouter.h"
 
 //#import "LSCaseKingManager.h"
@@ -30,8 +32,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *emblemBtn;
 @property (weak, nonatomic) IBOutlet UIButton *gradeBtn;
 
-
-
 @end
 @implementation LSNewMineHeaderView
 
@@ -41,12 +41,18 @@
     
 }
 
+//- (void)setFrame:(CGRect)frame
+//{
+//    frame.size.height = 185;
+//    [super setFrame:frame];
+//}
+
+
 - (void)awakeFromNib {
     [super awakeFromNib];
-    self.backgroundColor = [UIColor lightGrayColor];
+    self.backgroundColor = [UIColor clearColor];
     self.topShadowView.backgroundColor = [UIColor clearColor];
-    self.topView.backgroundColor = [UIColor clearColor];
-
+    
     
 //    _topShadowView.layer.backgroundColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1.0].CGColor;
 //    _topShadowView.layer.cornerRadius = 8;
@@ -54,7 +60,7 @@
 //    _topShadowView.layer.shadowOffset = CGSizeMake(0,2);
 //    _topShadowView.layer.shadowOpacity = 1;
 //    _topShadowView.layer.shadowRadius = 20;
-    //_crownImageView.hidden = ![LSCaseKingManager iamCaseKing];
+//    _crownImageView.hidden = ![LSCaseKingManager iamCaseKing];
     
 }
 
@@ -76,6 +82,7 @@
 //    [_gradeBtn  setTitle:model.level forState:UIControlStateNormal];
 //    _iconImageView.ls_verifyBadge = model.isAuthDoctor.integerValue;
 //}
+
 - (IBAction)nextSetInfoClick:(id)sender {
     
     
@@ -110,11 +117,11 @@
         default:
             break;
     }
-    //[self routerEventName:routName routerInfo:nil];
+   // [self routerEventName:routName routerInfo:nil];
 }
 - (IBAction)siginBtnClick:(id)sender {
     
-    //[self routerEventName:@"签到" routerInfo:nil];
+   // [self routerEventName:@"签到" routerInfo:nil];
     
 }
 
