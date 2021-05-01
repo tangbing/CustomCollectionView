@@ -2,7 +2,7 @@
 //  AppDelegate.m
 //  TbSettingProject
 //
-//  Created by Tb on 2021/4/30.
+//  Created by Tb on 2021/5/1.
 //
 
 
@@ -19,11 +19,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    
-    
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    
-
     SettingTableViewController *setting = [[SettingTableViewController alloc] init];
     self.window.rootViewController = setting;
     [self.window makeKeyAndVisible];

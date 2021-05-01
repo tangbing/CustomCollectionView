@@ -8,13 +8,10 @@
 
 #define  ATdeviceScaleWidth  [UIScreen mainScreen].bounds.size.width
 #define  ATdeviceScaleHight  [UIScreen mainScreen].bounds.size.height
-#define kSpace 16
 
 
 #import "SettingTableViewController.h"
 #import "CustomCollectionViewCell.h"
-#import "TBFooterCollectionReusableView.h"
-#import "CollectionFooterReusableView.h"
 #import <Masonry/Masonry.h>
 #import "CustomTableViewCell.h"
 

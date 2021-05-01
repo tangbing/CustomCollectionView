@@ -14,8 +14,9 @@
 
 @interface CustomTableViewCell()<UICollectionViewDataSource,UICollectionViewDelegate>
 
-@property (nonatomic, strong)UILabel *titleLabel;
 
+@property (nonatomic, strong)UIView *containerView;
+@property (nonatomic, strong)UILabel *titleLabel;
 @property (nonatomic, strong)UICollectionView *collectionView;
 
 
@@ -29,40 +30,34 @@
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(nullable NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        [self setupUI];
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
+        self.backgroundColor = [UIColor clearColor];
+        [self setupSubViewLayout];
     }
     return self;
 }
 
-- (void)setupUI {
+- (void)setupSubViewLayout {
     
-    self.selectionStyle = UITableViewCellSelectionStyleNone;
-    self.backgroundColor = [UIColor clearColor];
-    
-    UIView *containerView = [UIView new];
-    containerView.backgroundColor = [UIColor whiteColor];
-    containerView.layer.cornerRadius = 12.f;
-    containerView.layer.masksToBounds = YES;
-    [self.contentView addSubview:containerView];
-    
-    [containerView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.contentView addSubview:self.containerView];
+    [self.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.bottom.mas_equalTo(self.contentView);
         make.left.mas_equalTo(self.contentView.mas_left).mas_offset(15);
         make.right.mas_equalTo(self.contentView.mas_right).mas_offset(-15);
     }];
     
-    [containerView addSubview:self.titleLabel];
+    [self.containerView addSubview:self.titleLabel];
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(containerView.mas_left).mas_offset(15);
-        make.top.mas_equalTo(containerView.mas_top).mas_offset(15);
+        make.left.mas_equalTo(self.containerView.mas_left).mas_offset(15);
+        make.top.mas_equalTo(self.containerView.mas_top).mas_offset(15);
         make.height.mas_equalTo(30);
     }];
     
-    [containerView addSubview:self.collectionView];
+    [self.containerView addSubview:self.collectionView];
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.titleLabel.mas_left).mas_offset(0);
-        make.right.mas_equalTo(containerView.mas_right).mas_offset(-15);
-        make.bottom.mas_equalTo(containerView.mas_bottom).mas_offset(-15);
+        make.right.mas_equalTo(self.containerView.mas_right).mas_offset(-15);
+        make.bottom.mas_equalTo(self.containerView.mas_bottom).mas_offset(-15);
         make.top.mas_equalTo(self.titleLabel.mas_bottom).mas_offset(0);
     }];
     
@@ -131,7 +126,6 @@
         _collectionView.backgroundColor = [UIColor clearColor];
         _collectionView.dataSource = self;
         _collectionView.delegate = self;
-//        _collectionView.backgroundColor = [UIColor redColor];
 
 //        [_collectionView registerNib:[UINib nibWithNibName:@"LSNewMineHeaderView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
 //        [_collectionView registerClass:[CollectionFooterReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"footer"];
@@ -142,11 +136,21 @@
 - (UILabel *)titleLabel {
     if (!_titleLabel) {
         _titleLabel = [UILabel new];
-        _titleLabel.text = @"我的订单";
         _titleLabel.textColor = [UIColor lightGrayColor];
         _titleLabel.font = [UIFont boldSystemFontOfSize:16];
     }
     return _titleLabel;
+}
+
+- (UIView *)containerView {
+    if (!_containerView) {
+        UIView *containerView = [UIView new];
+        containerView.backgroundColor = [UIColor whiteColor];
+        containerView.layer.cornerRadius = 12.f;
+        containerView.layer.masksToBounds = YES;
+        _containerView = containerView;
+    }
+    return _containerView;
 }
 
 @end

@@ -15,10 +15,7 @@
 		33CA3ECE263C5D1C00B56774 /* TbSettingProjectUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 33CA3ECD263C5D1C00B56774 /* TbSettingProjectUITests.m */; };
 		33CA3EE9263C5D6B00B56774 /* SettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33CA3EE8263C5D6B00B56774 /* SettingTableViewController.m */; };
 		33E2D384263C61F6004FDF44 /* CustomCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E2D383263C61F6004FDF44 /* CustomCollectionViewCell.m */; };
-		33E2D394263C6945004FDF44 /* TBFooterCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E2D393263C6945004FDF44 /* TBFooterCollectionReusableView.m */; };
-		33E2D3A5263CFF0E004FDF44 /* CollectionFooterReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E2D3A4263CFF0E004FDF44 /* CollectionFooterReusableView.m */; };
 		33E2D3C2263D1E2F004FDF44 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E2D3C1263D1E2F004FDF44 /* UIView+Extension.m */; };
-		33E2D3D0263D26A9004FDF44 /* SectionBgCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E2D3CF263D26A9004FDF44 /* SectionBgCollectionViewLayout.swift */; };
 		33E2D40E263D8CBB004FDF44 /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E2D40D263D8CBB004FDF44 /* CustomTableViewCell.m */; };
 		33E2D413263D989E004FDF44 /* Setting.json in Resources */ = {isa = PBXBuildFile; fileRef = 33E2D412263D989E004FDF44 /* Setting.json */; };
 		33E2D419263D9A5B004FDF44 /* Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = 33E2D418263D9A5B004FDF44 /* Tool.m */; };
@@ -67,14 +64,8 @@
 		33CA3EE8263C5D6B00B56774 /* SettingTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SettingTableViewController.m; sourceTree = "<group>"; };
 		33E2D382263C61F6004FDF44 /* CustomCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomCollectionViewCell.h; sourceTree = "<group>"; };
 		33E2D383263C61F6004FDF44 /* CustomCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomCollectionViewCell.m; sourceTree = "<group>"; };
-		33E2D392263C6945004FDF44 /* TBFooterCollectionReusableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBFooterCollectionReusableView.h; sourceTree = "<group>"; };
-		33E2D393263C6945004FDF44 /* TBFooterCollectionReusableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBFooterCollectionReusableView.m; sourceTree = "<group>"; };
-		33E2D3A3263CFF0E004FDF44 /* CollectionFooterReusableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionFooterReusableView.h; sourceTree = "<group>"; };
-		33E2D3A4263CFF0E004FDF44 /* CollectionFooterReusableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionFooterReusableView.m; sourceTree = "<group>"; };
 		33E2D3C0263D1E2E004FDF44 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
 		33E2D3C1263D1E2F004FDF44 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
-		33E2D3C6263D2685004FDF44 /* TbSettingProject-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TbSettingProject-Bridging-Header.h"; sourceTree = "<group>"; };
-		33E2D3CF263D26A9004FDF44 /* SectionBgCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionBgCollectionViewLayout.swift; sourceTree = "<group>"; };
 		33E2D40C263D8CBB004FDF44 /* CustomTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomTableViewCell.h; sourceTree = "<group>"; };
 		33E2D40D263D8CBB004FDF44 /* CustomTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewCell.m; sourceTree = "<group>"; };
 		33E2D412263D989E004FDF44 /* Setting.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Setting.json; sourceTree = "<group>"; };
@@ -147,7 +138,8 @@
 		33CA3EA5263C5D1900B56774 /* TbSettingProject */ = {
 			isa = PBXGroup;
 			children = (
-				33E2D3AA263D08D3004FDF44 /* layout */,
+				33E2D441263DB534004FDF44 /* Model */,
+				33E2D3AA263D08D3004FDF44 /* Utils */,
 				33CA3EFD263C5EC700B56774 /* View */,
 				33CA3EA6263C5D1900B56774 /* AppDelegate.h */,
 				33CA3EA7263C5D1900B56774 /* AppDelegate.m */,
@@ -157,13 +149,6 @@
 				33CA3EB8263C5D1B00B56774 /* main.m */,
 				33CA3EE7263C5D6B00B56774 /* SettingTableViewController.h */,
 				33CA3EE8263C5D6B00B56774 /* SettingTableViewController.m */,
-				33E2D40C263D8CBB004FDF44 /* CustomTableViewCell.h */,
-				33E2D40D263D8CBB004FDF44 /* CustomTableViewCell.m */,
-				33E2D412263D989E004FDF44 /* Setting.json */,
-				33E2D417263D9A5B004FDF44 /* Tool.h */,
-				33E2D418263D9A5B004FDF44 /* Tool.m */,
-				33E2D41D263D9A7C004FDF44 /* SettingModel.h */,
-				33E2D41E263D9A7C004FDF44 /* SettingModel.m */,
 			);
 			path = TbSettingProject;
 			sourceTree = "<group>";
@@ -189,28 +174,60 @@
 		33CA3EFD263C5EC700B56774 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				33E2D42F263DA900004FDF44 /* LSNewMineHeaderView.h */,
-				33E2D430263DA900004FDF44 /* LSNewMineHeaderView.m */,
-				33E2D42E263DA8FF004FDF44 /* LSNewMineHeaderView.xib */,
-				33E2D382263C61F6004FDF44 /* CustomCollectionViewCell.h */,
-				33E2D383263C61F6004FDF44 /* CustomCollectionViewCell.m */,
-				33E2D392263C6945004FDF44 /* TBFooterCollectionReusableView.h */,
-				33E2D393263C6945004FDF44 /* TBFooterCollectionReusableView.m */,
-				33E2D3A3263CFF0E004FDF44 /* CollectionFooterReusableView.h */,
-				33E2D3A4263CFF0E004FDF44 /* CollectionFooterReusableView.m */,
+				33E2D442263DB553004FDF44 /* CustomTableViewCell */,
+				33E2D43A263DB504004FDF44 /* CustomCollectionViewCell */,
+				33E2D439263DB4F2004FDF44 /* LSNewMineHeaderView */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		33E2D3AA263D08D3004FDF44 /* layout */ = {
+		33E2D3AA263D08D3004FDF44 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				33E2D3CF263D26A9004FDF44 /* SectionBgCollectionViewLayout.swift */,
+				33E2D417263D9A5B004FDF44 /* Tool.h */,
+				33E2D418263D9A5B004FDF44 /* Tool.m */,
 				33E2D3C0263D1E2E004FDF44 /* UIView+Extension.h */,
 				33E2D3C1263D1E2F004FDF44 /* UIView+Extension.m */,
-				33E2D3C6263D2685004FDF44 /* TbSettingProject-Bridging-Header.h */,
 			);
-			path = layout;
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		33E2D439263DB4F2004FDF44 /* LSNewMineHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				33E2D42F263DA900004FDF44 /* LSNewMineHeaderView.h */,
+				33E2D430263DA900004FDF44 /* LSNewMineHeaderView.m */,
+				33E2D42E263DA8FF004FDF44 /* LSNewMineHeaderView.xib */,
+			);
+			path = LSNewMineHeaderView;
+			sourceTree = "<group>";
+		};
+		33E2D43A263DB504004FDF44 /* CustomCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				33E2D382263C61F6004FDF44 /* CustomCollectionViewCell.h */,
+				33E2D383263C61F6004FDF44 /* CustomCollectionViewCell.m */,
+			);
+			path = CustomCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		33E2D441263DB534004FDF44 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				33E2D412263D989E004FDF44 /* Setting.json */,
+				33E2D41D263D9A7C004FDF44 /* SettingModel.h */,
+				33E2D41E263D9A7C004FDF44 /* SettingModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		33E2D442263DB553004FDF44 /* CustomTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				33E2D40C263D8CBB004FDF44 /* CustomTableViewCell.h */,
+				33E2D40D263D8CBB004FDF44 /* CustomTableViewCell.m */,
+			);
+			path = CustomTableViewCell;
 			sourceTree = "<group>";
 		};
 		52EA00DBD0BF92269FC36539 /* Frameworks */ = {
@@ -475,13 +492,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				33E2D394263C6945004FDF44 /* TBFooterCollectionReusableView.m in Sources */,
 				33E2D3C2263D1E2F004FDF44 /* UIView+Extension.m in Sources */,
-				33E2D3A5263CFF0E004FDF44 /* CollectionFooterReusableView.m in Sources */,
 				33E2D419263D9A5B004FDF44 /* Tool.m in Sources */,
 				33E2D41F263D9A7C004FDF44 /* SettingModel.m in Sources */,
 				33CA3EE9263C5D6B00B56774 /* SettingTableViewController.m in Sources */,
-				33E2D3D0263D26A9004FDF44 /* SectionBgCollectionViewLayout.swift in Sources */,
 				33CA3EA8263C5D1900B56774 /* AppDelegate.m in Sources */,
 				33CA3EB9263C5D1B00B56774 /* main.m in Sources */,
 				33E2D40E263D8CBB004FDF44 /* CustomTableViewCell.m in Sources */,
@@ -694,7 +708,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 998299A8608E89CA387D5468 /* Pods-TbSettingProjectTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PRN7UWLM6M;
@@ -716,7 +729,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C2F10BB510663863659E3E9C /* Pods-TbSettingProjectTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PRN7UWLM6M;
@@ -738,7 +750,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5487F8B0641B047A70E4BA5E /* Pods-TbSettingProject-TbSettingProjectUITests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PRN7UWLM6M;
 				INFOPLIST_FILE = TbSettingProjectUITests/Info.plist;
@@ -758,7 +769,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 302279AFC258E9A933079C9F /* Pods-TbSettingProject-TbSettingProjectUITests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PRN7UWLM6M;
 				INFOPLIST_FILE = TbSettingProjectUITests/Info.plist;
