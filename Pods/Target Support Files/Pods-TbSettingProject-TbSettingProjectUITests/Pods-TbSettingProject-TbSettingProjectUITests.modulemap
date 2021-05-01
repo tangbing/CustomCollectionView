@@ -1,0 +1,6 @@
+framework module Pods_TbSettingProject_TbSettingProjectUITests {
+  umbrella header "Pods-TbSettingProject-TbSettingProjectUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
