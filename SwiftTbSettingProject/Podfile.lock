@@ -1,0 +1,20 @@
+PODS:
+  - KakaJSON (1.1.2)
+  - SnapKit (5.0.1)
+
+DEPENDENCIES:
+  - KakaJSON
+  - SnapKit (~> 5.0.1)
+
+SPEC REPOS:
+  trunk:
+    - KakaJSON
+    - SnapKit
+
+SPEC CHECKSUMS:
+  KakaJSON: cc5ff50a8c1cfbb09413db8496cb709a209e6137
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+
+PODFILE CHECKSUM: 911390c8cb9745d86571030d78f968adcd2e8c7a
+
+COCOAPODS: 1.9.3

@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_Pods_SwiftTbSettingProject_SwiftTbSettingProjectUITests : NSObject
+@end
+@implementation PodsDummy_Pods_SwiftTbSettingProject_SwiftTbSettingProjectUITests
+@end
