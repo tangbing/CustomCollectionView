@@ -7,7 +7,7 @@
 
 #import "CustomCollectionViewCell.h"
 #import <Masonry/Masonry.h>
-
+#import "UIResponder+LSRouter.h"
 @interface CustomCollectionViewCell()
 @property (nonatomic, strong)UIImageView * imageView;
 @property (nonatomic, strong)UILabel * label;
@@ -25,6 +25,8 @@
 - (void)setupUI {
     self.backgroundColor = [UIColor whiteColor];
     UIImageView *imageView = [[UIImageView alloc] init];
+    imageView.userInteractionEnabled = YES;
+    [imageView addGestureRecognizer: [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)]];
     [self.contentView addSubview:imageView];
     _imageView = imageView;
     [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -43,6 +45,11 @@
     }];
     
 }
+
+- (void)tap:(UITapGestureRecognizer *)tapGestureRecognizer {
+    [self routerEventName:@"clickImageTap" routerInfo:@{@"data" : _imageModel}];
+}
+
 - (void)setImageModel:(SubMenuModel *)imageModel {
     _imageModel = imageModel;
     

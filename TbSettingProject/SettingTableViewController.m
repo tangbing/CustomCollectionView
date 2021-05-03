@@ -19,7 +19,7 @@
 #import <MJExtension/MJExtension.h>
 #import "SettingModel.h"
 #import "LSNewMineHeaderView.h"
-
+#import "UIResponder+LSRouter.h"
 @interface SettingTableViewController ()
 @property (nonatomic, strong)NSArray <SettingModel *>* settingModelArray;
 @end
@@ -55,6 +55,16 @@
     [headerBgView addSubview:minHeaderView];
     minHeaderView.frame = headerBgView.bounds;
     self.tableView.tableHeaderView = headerBgView;
+}
+
+- (void)routerEventName:(NSString *)eventName routerInfo:(NSDictionary *)info{
+    if ([eventName isEqualToString:@"didSelectItem"]) {
+        SubMenuModel *menuModel = info[@"data"];
+        NSLog(@"click the title:%@",menuModel.imageTitle);
+    } else if ([eventName isEqualToString:@"clickImageTap"]) {
+        SubMenuModel *menuModel = info[@"data"];
+        NSLog(@"tap imageView the title:%@",menuModel.imageTitle);
+    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

@@ -11,7 +11,7 @@
 #import "CustomTableViewCell.h"
 #import <Masonry/Masonry.h>
 #import "CustomCollectionViewCell.h"
-
+#import "UIResponder+LSRouter.h"
 @interface CustomTableViewCell()<UICollectionViewDataSource,UICollectionViewDelegate>
 
 
@@ -78,6 +78,12 @@
     cell.imageModel = self.settingModel.subMenus[indexPath.item];
     
     return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    SubMenuModel *model = self.settingModel.subMenus[indexPath.item];
+    [self routerEventName:@"didSelectItem" routerInfo:@{@"data" : model}];
+    
 }
 
 //- (CGSize)collectionView:(UICollectionView*)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
